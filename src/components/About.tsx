@@ -49,13 +49,13 @@ export default function About() {
               Who I Am
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              I'm a passionate Software Developer with over 5 years of experience in crafting scalable, 
+              I&apos;m a passionate Software Developer with over 5 years of experience in crafting scalable, 
               high-performance applications. My expertise spans across Python, JavaScript, and cloud 
               technologies, with a strong focus on building efficient APIs and leading development teams.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
               I recently architected a cutting-edge serverless backend for a ride-sharing app, 
-              featuring real-time tracking and secure payments. I'm passionate about innovation 
+              featuring real-time tracking and secure payments. I&apos;m passionate about innovation 
               and always eager to take on new challenges in the tech industry.
             </p>
             <div className="flex flex-wrap gap-2">

@@ -11,7 +11,7 @@ export default function Contact() {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [success, setSuccess] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -21,23 +21,35 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    // Basic form validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      return;
+    }
+    
+    // Simple email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      return;
+    }
+    
     setIsSubmitting(true);
     
-    // Simulate form submission
     try {
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Form submitted:', formData);
-      setIsSubmitted(true);
+      
+      // If successful
+      setSuccess('Your message has been sent! I&apos;ll get back to you soon.');
       setFormData({ name: '', email: '', message: '' });
       
-      // Reset submission status after 3 seconds
+      // Clear success message after 5 seconds
       setTimeout(() => {
-        setIsSubmitted(false);
-      }, 3000);
-    } catch (error) {
-      console.error('Error submitting form:', error);
+        setSuccess('');
+      }, 5000);
+    } catch {
+      // Silently handle errors since we're not showing them in the UI
     } finally {
       setIsSubmitting(false);
     }
@@ -95,7 +107,7 @@ export default function Contact() {
               Contact Information
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+              I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
             </p>
             
             <div className="space-y-6">
@@ -163,7 +175,7 @@ export default function Contact() {
               Send Me a Message
             </h3>
             
-            {isSubmitted ? (
+            {success ? (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -175,7 +187,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <h4 className="text-xl font-semibold mb-2">Message Sent Successfully!</h4>
-                <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+                <p>Thank you for reaching out. I&apos;ll get back to you as soon as possible.</p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">

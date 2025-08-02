@@ -32,7 +32,7 @@ export default function Hero() {
           className="text-center md:text-left"
         >
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            Hi, I'm <span className="text-blue-600 dark:text-blue-400">Samson Amos</span>
+            Hi, I&apos;m <span className="text-blue-600 dark:text-blue-400">Samson Amos</span>
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-6">
             Software Developer

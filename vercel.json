@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    },
+    {
+      "src": "/(.*)\\.(css|js|ico|svg|png|jpg|jpeg|gif|webp|woff|woff2|ttf|eot)$",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "build": {
+    "env": {
+      "NEXT_TELEMETRY_DISABLED": "1",
+      "NODE_ENV": "production"
+    }
+  },
+  "outputDirectory": ".next"
+}

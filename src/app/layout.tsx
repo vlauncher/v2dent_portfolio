@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import { Fira_Code, Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const firaCode = Fira_Code({ 
-  subsets: ['latin'],
-  variable: '--font-fira-code',
-  display: 'swap',
-});
+// Get the base path for static assets
+const isDev = process.env.NODE_ENV === 'development';
+const basePath = isDev ? '' : ''; // No base path for root deployment
 
 export const metadata: Metadata = {
   title: 'Samson Amos | Software Developer',
@@ -31,8 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${firaCode.variable} scroll-smooth`}>
-      <body className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body className="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
         {children}
       </body>
     </html>
